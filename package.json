@@ -1,0 +1,46 @@
+{
+  "name": "atlas",
+  "description": "this project helps in the deployment of the projects",
+  "version": "0.0.1",
+  "author": "Vibhav Yadav",
+  "bin": {
+    "atlas": "./bin/run"
+  },
+  "bugs": "https://github.com/vibhavy/atlas/issues",
+  "dependencies": {
+    "@oclif/command": "^1.7.0",
+    "@oclif/config": "^1.16.0",
+    "@oclif/plugin-help": "^3.1.0",
+    "jshint": "^2.11.1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.2",
+    "@oclif/test": "^1.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/src"
+  ],
+  "homepage": "https://github.com/vibhavy/atlas",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "bin": "atlas"
+  },
+  "repository": "vibhavy/atlas",
+  "scripts": {
+    "prepack": "oclif-dev readme",
+    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
