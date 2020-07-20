@@ -1,8 +1,7 @@
 {
   "name": "atlas",
-  "description": "this project helps in the deployment of the projects",
   "version": "0.0.1",
-  "author": "Vibhav Yadav",
+  "author": "Vibhav Yadav @vibhavy",
   "bin": {
     "atlas": "./bin/run"
   },
@@ -17,6 +16,9 @@
     "@oclif/dev-cli": "^1.22.2",
     "@oclif/test": "^1.2.6",
     "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "globby": "^10.0.2",
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
     "rimraf": "^3.0.2"
@@ -26,6 +28,8 @@
   },
   "files": [
     "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
     "/src"
   ],
   "homepage": "https://github.com/vibhavy/atlas",
@@ -35,11 +39,17 @@
   "license": "MIT",
   "main": "src/index.js",
   "oclif": {
-    "bin": "atlas"
+    "commands": "./src/commands",
+    "bin": "atlas",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
   },
   "repository": "vibhavy/atlas",
   "scripts": {
-    "prepack": "oclif-dev readme",
+    "postpack": "rimraf oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
     "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
     "version": "oclif-dev readme && git add README.md"
   }
