@@ -1,15 +1,10 @@
 const {Command} = require('@oclif/command');
+const File = require('../controllers/file');
 
 class CreateCommand extends Command {
-
-    async getFile() {
-        let dir = process.cwd();
-        let filePath = `${dir}\\atlas.json`;
-        this.log(`i am from getFile ${filePath}`);
-    }
-
     async run() {
-        await this.getFile();
+        const config = await File.content();
+        this.log(config);
     }
 }
 
